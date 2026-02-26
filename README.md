@@ -5,8 +5,8 @@
 
 
 
-# SignaturePadPCF
-This project  is PCF control for Signature Pad and can be used in Power Apps forms.
+# 2D Floor Plan Sketching Tool
+This project  is PCF control for 2D Floor Plan Sketching Tool and can be used in Power Apps forms.
 
 # SignaturePad PCF Control
 
@@ -30,6 +30,6 @@ Before setting up the control, ensure you have the following installed:
 
 ### 1️⃣ Clone & Build the Project
 ```sh
-git clone https://github.com/alibajwa013/SignaturePadPCF.git
+git clone 
 cd SignaturePadPCF
 npm install
