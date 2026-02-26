@@ -1,17 +1,69 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest>
-  <control namespace="SignaturePadControl" constructor="SignaturePad" display-name-key="SignaturePad" description-key="SignaturePad description" version="1.0.0" control-type="standard" >
-    <external-service-usage enabled="false">
-    </external-service-usage>
-   <!-- Signature Value -->
-    <!-- <property name="value" display-name-key="Value" description-key="Value" of-type="SingleLine.Text" usage="bound" required="true"/> -->
-    <property name="value" display-name-key="Value" description-key="Value" of-type="Multiple" usage="bound" required="true"/>
-    
-    <!-- ✅ Make Width & Height Configurable -->
-    <property name="width" display-name-key="Width" description-key="Control Width" of-type="Whole.None" usage="input" required="false"/>
-    <property name="height" display-name-key="Height" description-key="Control Height" of-type="Whole.None" usage="input" required="false"/>
+  <control namespace="SignaturePadControl" constructor="SignaturePad"
+            display-name-key="SignaturePad" description-key="BathPlan Sketcher"
+            version="1.0.2" control-type="standard">
+
+    <external-service-usage enabled="false"/>
+
+    <!-- ── BOUND OUTPUTS (all three written on Save) ─────────────────
+         All three must be Multiline Text columns in Dataverse (max 1,048,576)
+         rt_planjson   → full JSON, walls + fixtures, used to re-open sketch
+         rt_beforepng  → base64 PNG of Before scene, bind to Image control
+         rt_afterpng   → base64 PNG of After scene,  bind to Image control
+    ─────────────────────────────────────────────────────────────────── -->
+    <property name="value"
+              display-name-key="Plan JSON"
+              description-key="Full JSON — bind to rt_planjson (Multiline Text)"
+              of-type="Multiple"
+              usage="bound"
+              required="true"/>
+
+    <property name="beforePng"
+              display-name-key="Before PNG"
+              description-key="base64 PNG of Before scene — bind to rt_beforepng (Multiline Text)"
+              of-type="Multiple"
+              usage="bound"
+              required="false"/>
+
+    <property name="afterPng"
+              display-name-key="After PNG"
+              description-key="base64 PNG of After scene — bind to rt_afterpng (Multiline Text)"
+              of-type="Multiple"
+              usage="bound"
+              required="false"/>
+
+    <!-- ── INPUT ─────────────────────────────────────────────────────
+         Bind sketchName to a label formula in Power Apps, e.g.:
+           "Bathroom " & ThisItem.rt_bathroomnumber
+         Shown in the sketcher header bar so surveyor knows which room.
+    ─────────────────────────────────────────────────────────────────── -->
+    <property name="sketchName"
+              display-name-key="Sketch Label"
+              description-key="Label shown in header, e.g. Bathroom 1"
+              of-type="SingleLine.Text"
+              usage="input"
+              required="false"/>
+
+    <!-- Width / Height: leave blank in Power Apps.
+         ResizeObserver auto-sizes the canvas to fill the control. -->
+    <property name="width"
+              display-name-key="Width"
+              description-key="Override width px — leave blank for auto"
+              of-type="Whole.None"
+              usage="input"
+              required="false"/>
+
+    <property name="height"
+              display-name-key="Height"
+              description-key="Override height px — leave blank for auto"
+              of-type="Whole.None"
+              usage="input"
+              required="false"/>
+
     <resources>
       <code path="index.ts" order="1"/>
     </resources>
+
   </control>
 </manifest>
