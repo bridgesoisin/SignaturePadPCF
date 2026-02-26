@@ -410,8 +410,8 @@ const SignaturePadComponent: React.FC<Props> = ({ value, sketchName, onSave }) =
         function renderScene(sceneKey:'before'|'after'): string {
             const scene = scenesRef.current[sceneKey];
             const out   = document.createElement('canvas');
-            out.width   = canvas.width;
-            out.height  = canvas.height;
+            out.width   = canvas!.width;
+            out.height  = canvas!.height;
             const oc    = out.getContext('2d')!;
             oc.fillStyle='white'; oc.fillRect(0,0,out.width,out.height);
             oc.lineWidth=0.5; oc.strokeStyle='#dde0e8';
