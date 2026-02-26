@@ -598,7 +598,9 @@ const SignaturePadComponent: React.FC<Props> = ({ value, onChange }) => {
             <style>{`
                 .bp-container{box-sizing:border-box;--bg:#1a1c22;--panel:#23262f;--border:#2e3140;--accent:#4f8ef7;--green:#3ecf8e;--red:#f75f5f;--amber:#f7c94f;--text:#e2e4ed;--muted:#6b7280;font-family:'DM Mono','Consolas','Courier New',monospace;color:var(--text);background:var(--bg);width:100%;height:100%;display:flex;flex-direction:column;overflow:hidden;}
                 .bp-header{height:56px;background:var(--panel);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 14px;gap:12px;flex-shrink:0;}
-                .bp-logo{font-size:16px;font-weight:800;color:var(--text);white-space:nowrap;letter-spacing:-0.5px;}
+                
+                .bp-logo{display:flex;flex-direction:column;align-items:center;line-height:1;font-weight:800;white-space:nowrap;letter-spacing:-0.5px;}
+
                 .bp-logo span{color:var(--accent);}
                 .bp-divider{width:1px;height:28px;background:var(--border);margin:0 4px;}
                 .bp-tab{padding:7px 20px;border-radius:6px;border:1.5px solid var(--border);background:transparent;color:var(--muted);font-family:inherit;font-size:14px;font-weight:500;cursor:pointer;transition:all .15s;}
@@ -614,8 +616,10 @@ const SignaturePadComponent: React.FC<Props> = ({ value, onChange }) => {
                 .bp-tbtn.bp-danger{color:var(--red);}
                 .bp-tbtn.bp-danger:hover{background:rgba(247,95,95,.1);border-color:var(--red);}
                 .bp-tbtn.bp-dactive{background:rgba(247,95,95,.15);border-color:var(--red);color:var(--red);}
-                .bp-fbtn{display:flex;align-items:center;gap:8px;width:calc(100% - 16px);margin:0 8px 4px;padding:8px 12px;background:transparent;border:1.5px solid var(--border);border-radius:6px;color:var(--muted);font-family:inherit;font-size:13px;cursor:pointer;text-align:left;transition:all .12s;}
-                .bp-fbtn:hover{border-color:var(--accent);color:var(--text);background:rgba(79,142,247,.06);}
+                
+                .bp-fbtn{display:flex;align-items:center;gap:8px;width:calc(100% - 16px);margin:0 8px 4px;padding:8px 12px;background:transparent;border:1.5px solid var(--border);border-radius:6px;color:#ffffff;font-weight:500;font-family:inherit;font-size:15px;cursor:pointer;text-align:left;transition:all .12s;}
+                .bp-fbtn:hover{border-color:#6b7280;color:#b0b5c9;background:rgba(107,114,128,0.2);}
+                
                 .bp-fbtn.bp-placing{border-color:var(--green);color:var(--green);background:rgba(62,207,142,.1);}
                 .bp-wrap{flex:1;overflow:auto;background:#10121a;padding:24px;}
                 .bp-canvas{display:block;background:#f4f5f7;touch-action:none;}
@@ -629,7 +633,12 @@ const SignaturePadComponent: React.FC<Props> = ({ value, onChange }) => {
 
             <div className="bp-container">
                 <div className="bp-header">
-                    <div className="bp-logo">BATH<span>PLAN</span></div>
+                    
+                    <div className="bp-logo">
+                       <span style={{ fontSize: '14px', color: '#ffffff' }}>CLASSIC</span>
+                        <span style={{ fontSize: '14px', color: 'var(--accent)' }}>BATHROOMS</span>
+                    </div>
+                    
                     <div className="bp-divider"/>
                     <button className={`bp-tab${activeTab==='before'?' bp-active':''}`} onClick={()=>doSwitchTab('before')}>▸ Before</button>
                     <button className={`bp-tab${activeTab==='after'?' bp-active':''}`}  onClick={()=>doSwitchTab('after')}>▸ After</button>
