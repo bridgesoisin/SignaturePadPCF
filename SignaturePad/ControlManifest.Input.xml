@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest>
   <control namespace="SignaturePadControl" constructor="SignaturePad"
-            display-name-key="SignaturePad" description-key="BathPlan Sketcher"
-            version="1.0.2" control-type="standard">
+            display-name-key="FloorPlan" description-key="BathPlan Sketcher"
+            version="1.0.3" control-type="standard">
 
     <external-service-usage enabled="false"/>
 
