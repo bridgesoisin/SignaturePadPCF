@@ -2,7 +2,7 @@
 <manifest>
   <control namespace="SignaturePadControl" constructor="SignaturePad"
             display-name-key="FloorPlan" description-key="BathPlan Sketcher"
-            version="1.0.3" control-type="standard">
+            version="1.0.4" control-type="standard">
 
     <external-service-usage enabled="false"/>
 
